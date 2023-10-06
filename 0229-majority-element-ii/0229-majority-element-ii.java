@@ -1,7 +1,7 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int max1 = 0; int counter1 = 0;
-        int max2 = 0; int counter2 = 0;
+        int max1 = 0, counter1 = 0;
+        int max2 = 0, counter2 = 0;
 
         for( int num: nums){
             if(num == max1) counter1++;
