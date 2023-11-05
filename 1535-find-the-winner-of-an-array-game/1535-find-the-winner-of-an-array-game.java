@@ -1,18 +1,16 @@
 class Solution {
     public int getWinner(int[] arr, int k) {
-        int winnerIndex = 0;
+        int winner = arr[0];
         int winCount = 0;
-        int curr = 0;
-        while (winCount < k && winCount < arr.length - 1) {
-            if (curr == winnerIndex) ++curr;
-            curr %= arr.length;
-            if (arr[winnerIndex] > arr[curr]) ++winCount;
+        int curr = 1;
+        while (winCount < k && curr < arr.length) {
+            if (winner > arr[curr]) ++winCount;
             else {
-                winnerIndex = curr;
+                winner = arr[curr];
                 winCount = 1;
             }
             ++curr;
         }
-        return arr[winnerIndex];
+        return winner;
     }
 }
