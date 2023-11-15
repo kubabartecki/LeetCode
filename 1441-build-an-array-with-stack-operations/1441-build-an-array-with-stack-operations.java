@@ -10,6 +10,7 @@ class Solution {
             }
             operations.add("Push");
         }
+        
         return operations;
     }
 }
