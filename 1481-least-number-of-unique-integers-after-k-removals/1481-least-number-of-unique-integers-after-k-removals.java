@@ -14,12 +14,13 @@ class Solution {
             if (freq[i] == 0) {
                 continue;
             }
-            int availablePoints = Math.min(k, freq[i] * i);
-            k -= availablePoints;
-            res -= availablePoints / i;
-            if (k == 0) {
-                break;
+            if (k > freq[i] * i) {
+                k -= freq[i] * i;
+                res -= freq[i];
+                continue;
             }
+            res -= k / i;
+            break;
         }
         return res;
     }
