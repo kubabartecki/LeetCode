@@ -6,18 +6,11 @@ class Solution {
             if (heightDiff <= 0) {
                 // jump off
                 continue; 
-            } else if (ladders > 0) {
-                // use all of the ladders if available
-                --ladders;
-                prevDiffs.offer(heightDiff);
-                continue;
-            } else if (!prevDiffs.isEmpty() && heightDiff > prevDiffs.peek()) {
-                // exchange bricks to ladder for new bigger height
+            }
+            prevDiffs.offer(heightDiff);
+            if (prevDiffs.size() > ladders) {
+                // out of ladders
                 bricks -= prevDiffs.poll();
-                prevDiffs.offer(heightDiff);
-            } else {
-                // use bricks
-                bricks -= heightDiff;
             }
             if (bricks < 0) {
                 // not enought bricks
