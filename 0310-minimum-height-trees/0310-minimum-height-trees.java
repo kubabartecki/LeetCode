@@ -5,14 +5,14 @@ class Solution {
             mht.add(0);
             return mht;
         }
-        List<List<Integer>> tree = new ArrayList<>();
+        List<Integer> [] tree = new ArrayList[n];
         for (int i = 0; i < n; ++i) {
-            tree.add(new ArrayList<Integer>());
+            tree[i] = new ArrayList<Integer>();
         }
         int [] degree = new int [n];
         for (int [] edge : edges) {
-            tree.get(edge[0]).add(edge[1]);
-            tree.get(edge[1]).add(edge[0]);
+            tree[edge[0]].add(edge[1]);
+            tree[edge[1]].add(edge[0]);
             ++degree[edge[0]];
             ++degree[edge[1]];
         }
@@ -29,7 +29,7 @@ class Solution {
             used += oldSize;
             for (int i = 0; i < oldSize; ++i) {
                 int leaf = leaves.poll();
-                for (int node : tree.get(leaf)) {
+                for (int node : tree[leaf]) {
                     if (--degree[node] == 1) {
                         leaves.offer(node);
                     }
